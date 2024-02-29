@@ -15,13 +15,6 @@ const speciesData = [
     category: '1',
   },
 ];
-
-const categoryData = [
-  {
-    id: '1',
-    category_name: 'Mammal',
-  },
-];
 */
 export default {
   Query: {
