@@ -1,18 +1,39 @@
+scalar Date
+
 type Animal {
   id: ID!
   animal_name: String!
   species: Species!
+  birthdate: Date!
+  gender: Gender!
+}
+
+enum Gender {
+  Male
+  Female
 }
 
 type Query {
   animals: [Animal]
+  animal(id: ID!): Animal
 }
 
 type InputAnimal {
   animal_name: String!
   species_id: ID!
+  birthdate: Date!
+  gender: Gender!
+}
+
+type UpdateAnimal {
+  animal_name: String!
+  species_id: ID!
+  birthdate: Date!
+  gender: Gender!
 }
 
 type Mutation {
   addAnimal(input: InputAnimal): Animal
+  deleteAnimal(id: ID!): Animal
+  updateAnimal(id: ID!, input: UpdateAnimal!): Animal
 }
