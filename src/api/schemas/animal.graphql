@@ -19,7 +19,7 @@ type Query {
 }
 
 type InputAnimal {
-  animal_name: String!
+  animal_name: String! @constraint(pattern: "^[^';`/\(){}]*$")
   species_id: ID!
   birthdate: Date!
   gender: Gender!
