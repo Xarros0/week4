@@ -1,7 +1,6 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 import {Animal} from '../../types/DBTypes';
 import AnimalModel from '../models/animalModel';
-
 export default {
   Query: {
     animals: async () => {
@@ -14,7 +13,7 @@ export default {
   Mutation: {
     addAnimal: async (
       _parent: undefined,
-      args: {input: Partial<Omit<Animal, 'id'>>},
+      args: {input: Omit<Animal, 'id'>},
     ) => {
       return await AnimalModel.create(args.input);
     },
