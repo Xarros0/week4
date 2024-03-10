@@ -6,6 +6,9 @@ type Animal {
   species: Species!
   birthdate: Date!
   gender: Gender!
+  location: GeoPoint!
+  owner: User!
+  image: String!
 }
 
 enum Gender {
@@ -19,10 +22,12 @@ type Query {
 }
 
 input InputAnimal {
-  animal_name: String!
+  animal_name: String! @constraint(pattern: "^[^';`/\\(){}]*$")
   species_id: ID!
   birthdate: Date!
   gender: Gender!
+  location: InputGeoPoint!
+  image: String!
 }
 
 input UpdateAnimal {
@@ -30,10 +35,22 @@ input UpdateAnimal {
   species_id: ID!
   birthdate: Date!
   gender: Gender!
+  location: InputGeoPoint!
 }
 
 type Mutation {
+  """
+  Token is required to access this operation
+  """
   addAnimal(input: InputAnimal): Animal
+
+  """
+  Token is required to access this operation
+  """
   deleteAnimal(id: ID!): Animal
+
+  """
+  Token is required to access this operation
+  """
   updateAnimal(id: ID!, input: UpdateAnimal!): Animal
 }

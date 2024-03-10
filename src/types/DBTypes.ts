@@ -13,6 +13,8 @@ type Animal = {
   birthdate: Date;
   gender: 'Male' | 'Female';
   owner: Types.ObjectId | User;
+  location: Point;
+  image: string;
 };
 
 type FullAnimal = Omit<Animal, 'species'> & {
@@ -24,6 +26,7 @@ type Species = {
   species_name: string;
   category: Types.ObjectId;
   image: string;
+  owner: Types.ObjectId | User;
   location: Point;
 };
 
